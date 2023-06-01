@@ -19,27 +19,27 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Configurando ID para representar llave primaria de la tabla
 
-    @Column(name = "id")// Esto se hace cuando los nombres de las tablas no coiciden con los de this.
-    private Long idProducto;
+    @Column(name = "idProducto")// Esto se hace cuando los nombres de las tablas no coiciden con los de this.
+    private Long idPro;
 
-    @Column(name = "nombre")
+    @Column(name = "nombreProducto")
     private String nombrePro;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcionProducto")
     private String descripcionPro;
 
-    @Column(name = "cantidad")
+    @Column(name = "cantidadProducto")
     private int cantidadPro;
 
-    @Column(name = "precio")
+    @Column(name = "precioProducto")
     private BigDecimal precioPro;
 
     public Long getIdProducto() {
-        return idProducto;
+        return idPro;
     }
 
     public void setIdProducto(Long idProducto) {
-        this.idProducto = idProducto;
+        this.idPro = idProducto;
     }
 
     public String getNombrePro() {

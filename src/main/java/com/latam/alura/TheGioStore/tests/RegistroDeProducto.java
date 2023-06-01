@@ -20,6 +20,7 @@ public class RegistroDeProducto {
         
         celular.setNombrePro("Samsumg");
         celular.setDescripcionPro("Telefono Usado");
+        celular.setCantidadPro(10);
         celular.setPrecioPro(new BigDecimal("1000"));
         
         EntityManager ManejadorEntidad = JPAUtils.recuperarConexion();

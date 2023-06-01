@@ -6,7 +6,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
     <persistence-unit name="TheGioStore" transaction-type="RESOURCE_LOCAL">
-        <class>com.latam.alura.TheGioStore.modelo.Producto</class><!--opcional Estas son las rutas de las tablas que vamos a mapear-->
+        <class>com.latam.alura.TheGioStore.modelo.Producto</class><!--opcional Estas son las rutas de las tablas que vamos a mapear, sino se colc-->
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;database=control_de_stock;loginTimeout=30;TrustServerCertificate=True;"/>

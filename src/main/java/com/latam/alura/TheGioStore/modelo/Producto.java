@@ -8,23 +8,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 /**
  *
  * @author giova
  */
 @Entity
-@Table(name="Productos") //Esto se hace cuando la clase no tiene el mismo nombre de la tabla.
+@Table(name = "Productos") //Esto se hace cuando la clase no tiene el mismo nombre de la tabla.
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY) //Configurando ID para representar llave primaria de la tabla
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Configurando ID para representar llave primaria de la tabla
+
+    @Column(name = "id")// Esto se hace cuando los nombres de las tablas no coiciden con los de this.
     private Long idProducto;
-    //@Column(name="nombreProductos") // Esto se hace cuando 
+
+    @Column(name = "nombre")
     private String nombrePro;
+
+    @Column(name = "descripcion")
     private String descripcionPro;
+
+    @Column(name = "cantidad")
     private int cantidadPro;
+
+    @Column(name = "precio")
     private BigDecimal precioPro;
 
     public Long getIdProducto() {
@@ -67,5 +74,4 @@ public class Producto {
         this.precioPro = precioPro;
     }
 
-    
 }

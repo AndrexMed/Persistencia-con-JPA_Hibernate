@@ -23,7 +23,10 @@ public class RegistroDeProducto {
         EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("TheGioStore");
         EntityManager ManejadorEntidad = fabrica.createEntityManager();
         
+        ManejadorEntidad.getTransaction().begin();
         ManejadorEntidad.persist(celular);
+        ManejadorEntidad.getTransaction().commit();
+        ManejadorEntidad.close();
     }
     
 }

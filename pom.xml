@@ -38,15 +38,7 @@
             <version>2.1.214</version>
         </dependency>
         
-        <!--  
-         <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>12.3.0.jre20-preview</version>
-        </dependency>
-        -->
-       
-        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+        <!-- Dependencia compatible con JPA -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>

@@ -12,7 +12,10 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;database=control_de_stock;loginTimeout=30;TrustServerCertificate=True;"/>
             <property name="javax.persistence.jdbc.user" value="Andrex"/>
             <property name="javax.persistence.jdbc.password" value="andres01"/>
-
+            
+            <property name="hibernate.show_sql" value="true"/>  
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+            
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>        
         </properties>

@@ -1,8 +1,11 @@
 package com.latam.alura.TheGioStore.modelo;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +36,22 @@ public class Producto {
 
     @Column(name = "precioProducto")
     private BigDecimal precioPro;
+    
+    private LocalDate fechaRegistro = LocalDate.now(); //Esto manda como parametro a la consulta Insert, la fecha en que se genera el registro(consulta)
+    
+    @Enumerated(EnumType.STRING) //Conversion a String, ya que me retorna int
+    private Categoria categoria;
+
+    //Constructor
+    public Producto(String nombrePro, String descripcionPro, int cantidadPro, BigDecimal precioPro, Categoria categoria) {
+        this.nombrePro = nombrePro;
+        this.descripcionPro = descripcionPro;
+        this.cantidadPro = cantidadPro;
+        this.precioPro = precioPro;
+        this.categoria = categoria;
+    }
+    
+    
 
     public Long getIdProducto() {
         return idPro;

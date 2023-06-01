@@ -2,11 +2,10 @@ package com.latam.alura.TheGioStore.tests;
 
 import com.latam.alura.TheGioStore.dao.ProductoDAO;
 import com.latam.alura.TheGioStore.modelo.Producto;
+import com.latam.alura.TheGioStore.modelo.Categoria;
 import com.latam.alura.TheGioStore.utils.JPAUtils;
 import java.math.BigDecimal;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -16,12 +15,12 @@ public class RegistroDeProducto {
     
     public static void main(String[] args) {
         
-        Producto celular = new Producto();
+        Producto celular = new Producto("Samsumg",
+                                        "Telefono Usado",
+                                        10 , 
+                                        new BigDecimal("1000"),
+                                        Categoria.LIBROS);
         
-        celular.setNombrePro("Samsumg");
-        celular.setDescripcionPro("Telefono Usado");
-        celular.setCantidadPro(10);
-        celular.setPrecioPro(new BigDecimal("1000"));
         
         EntityManager ManejadorEntidad = JPAUtils.recuperarConexion();
         

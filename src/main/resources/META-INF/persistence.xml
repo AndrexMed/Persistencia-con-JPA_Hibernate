@@ -6,7 +6,6 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
     <persistence-unit name="TheGioStore" transaction-type="RESOURCE_LOCAL">
-        <class>com.latam.alura.TheGioStore.modelo.Producto</class><!--opcional Estas son las rutas de las tablas que vamos a mapear, sino se colc-->
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;database=the_gio_store;loginTimeout=30;TrustServerCertificate=True;"/>
@@ -14,10 +13,10 @@
             <property name="javax.persistence.jdbc.password" value="andres01"/>
             
             <property name="hibernate.show_sql" value="true"/>  
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             
-            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>        
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>      
         </properties>
     </persistence-unit>
 </persistence>

@@ -1,5 +1,6 @@
 package com.latam.alura.TheGioStore.tests;
 
+import com.latam.alura.TheGioStore.dao.CategoriaDAO;
 import com.latam.alura.TheGioStore.dao.ProductoDAO;
 import com.latam.alura.TheGioStore.modelo.Producto;
 import com.latam.alura.TheGioStore.modelo.Categoria;
@@ -24,13 +25,16 @@ public class RegistroDeProducto {
                                         celulares);
         
         
-        EntityManager ManejadorEntidad = JPAUtils.recuperarConexion();
+        EntityManager ManejadorEntidad = JPAUtils.recuperarConexion(); //Iniciamos la conexion
         
         ProductoDAO productoDao = new ProductoDAO(ManejadorEntidad);
+        
+        CategoriaDAO categoriaDao = new CategoriaDAO(ManejadorEntidad);
         
         ManejadorEntidad.getTransaction().begin(); //Iniciamos la transaccion
         
         productoDao.guardar(celular); //Realizamos la persistencia
+        categoriaDao.guardar(celulares);
         
         ManejadorEntidad.getTransaction().commit();//Enviamos a la BD
         ManejadorEntidad.close(); // Cerramos la conexion

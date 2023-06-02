@@ -40,7 +40,7 @@ public class Producto {
     
     
     //@Enumerated(EnumType.STRING) //Conversion a String, ya que me retorna int
-    @ManyToOne
+    @ManyToOne    //Creamos la relacion entre Tabla Productos y Categorias
     private Categoria categoria;
 
     //Constructor

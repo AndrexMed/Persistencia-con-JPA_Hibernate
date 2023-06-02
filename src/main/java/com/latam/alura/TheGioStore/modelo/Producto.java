@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -39,7 +38,9 @@ public class Producto {
     
     private LocalDate fechaRegistro = LocalDate.now(); //Esto manda como parametro a la consulta Insert, la fecha en que se genera el registro(consulta)
     
-    @Enumerated(EnumType.STRING) //Conversion a String, ya que me retorna int
+    
+    //@Enumerated(EnumType.STRING) //Conversion a String, ya que me retorna int
+    @ManyToOne
     private Categoria categoria;
 
     //Constructor
@@ -52,7 +53,6 @@ public class Producto {
     }
     
     
-
     public Long getIdProducto() {
         return idPro;
     }

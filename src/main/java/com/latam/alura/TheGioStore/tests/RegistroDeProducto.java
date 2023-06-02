@@ -15,11 +15,13 @@ public class RegistroDeProducto {
     
     public static void main(String[] args) {
         
+        Categoria celulares = new Categoria("Celulares");
+        
         Producto celular = new Producto("Samsumg",
                                         "Telefono Usado",
                                         10 , 
                                         new BigDecimal("1000"),
-                                        Categoria.LIBROS);
+                                        celulares);
         
         
         EntityManager ManejadorEntidad = JPAUtils.recuperarConexion();

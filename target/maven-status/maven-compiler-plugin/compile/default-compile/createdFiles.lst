@@ -1,4 +1,6 @@
+com\latam\alura\TheGioStore\tests\RegistroDeProductoV3.class
 com\latam\alura\TheGioStore\utils\JPAUtils.class
+com\latam\alura\TheGioStore\tests\RegistroDeProductoV2.class
 com\latam\alura\TheGioStore\dao\ProductoDAO.class
 com\latam\alura\TheGioStore\tests\RegistroDeProducto.class
 com\latam\alura\TheGioStore\dao\CategoriaDAO.class

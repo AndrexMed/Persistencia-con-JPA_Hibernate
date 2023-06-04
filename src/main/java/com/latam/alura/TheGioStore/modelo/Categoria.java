@@ -11,13 +11,18 @@ import javax.persistence.Table;
  * @author giova
  */
 @Entity
-@Table(name="Categorias")
+@Table(name = "Categorias")
 public class Categoria {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategoria;
     private String nombreCategoria;
+
+    //Constructor
+    public Categoria() {
+        
+    }
 
     //Constructor
     public Categoria(String nombreCategoria) {
@@ -39,7 +44,5 @@ public class Categoria {
     public void setNombreCategoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
-    
-    
 
 }

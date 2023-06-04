@@ -35,13 +35,17 @@ public class Producto {
 
     //@Column(name = "precioProducto")
     private BigDecimal precioPro;
-    
+
     private LocalDate fechaRegistro = LocalDate.now(); //Esto manda como parametro a la consulta Insert, la fecha en que se genera el registro(consulta)
-    
-    
+
     //@Enumerated(EnumType.STRING) //Conversion a String, ya que me retorna int
     @ManyToOne    //Creamos la relacion entre Tabla Productos y Categorias
     private Categoria categoria;
+
+    //Constructor
+    public Producto() {
+        
+    }
 
     //Constructor
     public Producto(String nombrePro, String descripcionPro, int cantidadPro, BigDecimal precioPro, Categoria categoria) {
@@ -51,8 +55,7 @@ public class Producto {
         this.precioPro = precioPro;
         this.categoria = categoria;
     }
-    
-    
+
     public Long getIdProducto() {
         return idPro;
     }

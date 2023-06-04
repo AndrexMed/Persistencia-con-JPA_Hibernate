@@ -20,4 +20,8 @@ public class CategoriaDAO {
         this.conexion.persist(categoria);
     }
     
+    public void actualizar(Categoria categoria){
+        this.conexion.merge(categoria);
+    }
+    
 }

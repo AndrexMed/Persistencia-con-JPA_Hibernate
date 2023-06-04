@@ -40,4 +40,9 @@ public class ProductoDAO {
         return this.conexion.createQuery(consultaJQPL, Producto.class).getResultList();
     }
     
+    public List<Producto> consultaPorNombre(String nombreEntrante){
+        String consultaJQPL = "SELECT P FROM Producto AS P WHERE P.nombrePro = :nombrePro";
+        return this.conexion.createQuery(consultaJQPL).setParameter("nombrePro", nombreEntrante).getResultList();
+    }
+    
 }

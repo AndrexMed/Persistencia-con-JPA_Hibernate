@@ -16,24 +16,34 @@ import javax.persistence.EntityManager;
 public class ConsultasEntidades {
 
     public static void main(String[] args) {
-        
-        //registrarProducto(); // Metodo que guarda un registro de un producto y su categoria...
 
+        //registrarProducto(); // Metodo que guarda un registro de un producto y su categoria...
         EntityManager ManejadorEntidad = JPAUtils.recuperarConexion(); //Iniciamos la conexion
 
         ProductoDAO productoDao = new ProductoDAO(ManejadorEntidad); //Heredamos los metodos del DAO
-        
-        Producto producto = productoDao.consultaPorId(5l); // Almacenamos la consulta en una variable
-        
-        System.out.println("Se encontro el producto: " + producto.getNombrePro()); //Imprimimos el resultado
 
-        List<Producto> productos = productoDao.consultarTodos();
-        
-        productos.forEach(item -> System.out.println("NombreProducto: "+ item.getNombrePro() + ", Descripcion:" +item.getDescripcionPro()));
-        
+        Producto productoPorId = productoDao.consultaPorId(5l); // Almacenamos la consulta en una variable, se agrega la "l" para decirle que es de tipo Long
+
+        System.out.println("*****");
+        System.out.println("Se encontro el productoPorID: " + productoPorId.getNombrePro()); //Imprimimos el resultado
+        System.out.println("*****");
+
+        List<Producto> TodosLosProductos = productoDao.consultarTodos();
+
+        System.out.println("***** TODOS LOS PRODUCTOS *****");
+        TodosLosProductos.forEach(item -> System.out.println("NombreProducto: " + item.getNombrePro()
+                + ", Descripcion: " + item.getDescripcionPro()
+                + ", Cantidad: " + item.getCantidadPro()
+                + ", Precio: $" + item.getPrecioPro()));
+
+        List<Producto> productosPorNombre = productoDao.consultaPorNombre("Asus");
+
+        System.out.println("*****Busqueda Por Nombre");
+        productosPorNombre.forEach(item -> System.out.println("Descripcion del producto buscado por nombre : " + item.getDescripcionPro()));
+        System.out.println("*****");
     }
 
-    
+//Metodo para insertar Producto y Categoria.
     private static void registrarProducto() {
         Categoria categoria = new Categoria("Computadores");
 

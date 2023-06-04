@@ -21,19 +21,19 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Configurando ID para representar llave primaria de la tabla
 
-    @Column(name = "idProducto")// Esto se hace cuando los nombres de las tablas no coiciden con los de this.
+    //@Column(name = "idProducto")// Esto se hace cuando los nombres de las tablas no coiciden con los de de la clase.
     private Long idPro;
 
-    @Column(name = "nombreProducto")
+    //@Column(name = "nombreProducto")
     private String nombrePro;
 
-    @Column(name = "descripcionProducto")
+    //@Column(name = "descripcionProducto")
     private String descripcionPro;
 
-    @Column(name = "cantidadProducto")
+    //@Column(name = "cantidadProducto")
     private int cantidadPro;
 
-    @Column(name = "precioProducto")
+    //@Column(name = "precioProducto")
     private BigDecimal precioPro;
     
     private LocalDate fechaRegistro = LocalDate.now(); //Esto manda como parametro a la consulta Insert, la fecha en que se genera el registro(consulta)

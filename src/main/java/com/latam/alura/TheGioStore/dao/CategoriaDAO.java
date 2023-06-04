@@ -24,4 +24,10 @@ public class CategoriaDAO {
         this.conexion.merge(categoria);
     }
     
+    public void remover(Categoria categoria){
+        //this.conexion.merge(categoria);
+        categoria = conexion.merge(categoria);
+        this.conexion.remove(categoria);
+    }
+    
 }

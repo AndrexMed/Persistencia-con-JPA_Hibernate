@@ -25,7 +25,7 @@ public class RegistroDeProductoV2 {
         
         conexion.close(); //Cerramos la Conexion!
         
-        categoria.setNombreCategoria("Software"); //Realizamos un cambio de prueba
+        categoria.setNombreCategoria("Software"); //Realizamos un cambio de prueba - Esta parte no la compila ya que se cerro la conexion.
     }
     
 }

@@ -9,15 +9,24 @@ import javax.persistence.EntityManager;
  */
 public class ProductoDAO {
     
-    private EntityManager em;
+    private EntityManager conexion;
 
     //Constructor
     public ProductoDAO(EntityManager em) {
-        this.em = em;
+        this.conexion = em;
     }
     
     public void guardar(Producto producto){
-        this.em.persist(producto);
+        this.conexion.persist(producto);
+    }
+    
+    public void actualizar(Producto producto){
+        this.conexion.merge(producto);
+    }
+    
+    public void remover(Producto producto){
+        this.conexion.merge(producto);
+        this.conexion.remove(producto);
     }
     
 }

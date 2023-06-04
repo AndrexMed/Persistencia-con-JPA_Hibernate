@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
  *
  * @author giova
  */
-public class RegistroDeProductoV3 {
-    public static void main(String[] args) {
+public class RegistroDeProductoV4 {
+     public static void main(String[] args) {
         
         System.out.println("Hello World");
         
@@ -23,21 +23,20 @@ public class RegistroDeProductoV3 {
         
         categoria.setNombreCategoria("Tvss"); //Cambio prueba
         
-        conexion.flush(); //Sincronizamos cambios
-        
+        conexion.flush(); //Sincronizamos cambios   
         conexion.clear(); //Borra cambios en la memoria, en este caso categoria se vuelve entidad "desconectada"
         
         categoria = conexion.merge(categoria); //Volvemos abrir la persistencia
-        
         categoria.setNombreCategoria("Software"); //Cambio de prueba
         
-        conexion.flush(); // Sincronizamos cambios con la bd
+        conexion.flush(); // Sincronizamos cambios con la bd    
+        conexion.clear();  //Borramos los cambios del Managed
         
-        conexion.getTransaction().commit(); //Confirmamos los cambios a la BD
-        
-        //conexion.close();
-        
+        categoria = conexion.merge(categoria);  //Volvemos a subir el obj al Managed 
+        conexion.remove(categoria);     
+        conexion.flush();
+          
+        conexion.getTransaction().commit();
         System.out.println("Hola Mundo");
     }
-    
 }

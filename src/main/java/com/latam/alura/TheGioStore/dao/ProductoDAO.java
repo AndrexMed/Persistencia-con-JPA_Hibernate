@@ -1,6 +1,7 @@
 package com.latam.alura.TheGioStore.dao;
 
 import com.latam.alura.TheGioStore.modelo.Producto;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
@@ -27,6 +28,11 @@ public class ProductoDAO {
     public void remover(Producto producto){
         this.conexion.merge(producto);
         this.conexion.remove(producto);
+    }
+    
+    //Metodo que recibe una id, donde la buscamos en la entidad Producto.
+    public Producto consultaPorId(Long id){
+        return this.conexion.find(Producto.class, id);
     }
     
 }

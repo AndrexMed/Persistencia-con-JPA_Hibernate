@@ -35,4 +35,9 @@ public class ProductoDAO {
         return this.conexion.find(Producto.class, id);
     }
     
+    public List<Producto> consultarTodos(){
+        String consultaJQPL = "SELECT P FROM Producto AS P"; //Esta consulta distingue Mayus y Minus
+        return this.conexion.createQuery(consultaJQPL, Producto.class).getResultList();
+    }
+    
 }

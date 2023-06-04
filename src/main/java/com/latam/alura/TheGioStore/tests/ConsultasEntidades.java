@@ -6,6 +6,7 @@ import com.latam.alura.TheGioStore.modelo.Categoria;
 import com.latam.alura.TheGioStore.modelo.Producto;
 import com.latam.alura.TheGioStore.utils.JPAUtils;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
@@ -26,6 +27,9 @@ public class ConsultasEntidades {
         
         System.out.println("Se encontro el producto: " + producto.getNombrePro()); //Imprimimos el resultado
 
+        List<Producto> productos = productoDao.consultarTodos();
+        
+        productos.forEach(item -> System.out.println("NombreProducto: "+ item.getNombrePro() + ", Descripcion:" +item.getDescripcionPro()));
         
     }
 

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,12 +26,12 @@ public class Pedido {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long idPedido;
     private LocalDate fechaRegistro = LocalDate.now();
-    private BigDecimal total;
+    private BigDecimal valorTotal = new BigDecimal(0);
     
     @ManyToOne // Muchos Pedidos a Un Cliente... Aqui relacionamos Pedido con Cliente
     private Cliente cliente;
     
-    @OneToMany(mappedBy = "pedidoFK") // Tipo de Relacion : Un Pedido a Muchos "ItemsDelPedido", Con el mapped, referenciamos exactamente con la tabla ItemsDelPedido
+    @OneToMany(mappedBy = "pedidoFK", cascade = CascadeType.ALL) // Tipo de Relacion : Un Pedido a Muchos "ItemsDelPedido", Con el mapped, referenciamos exactamente con la tabla ItemsDelPedido
     private List<ItemsDelPedido> elementos = new ArrayList<>(); //Lista vacia
     
     //Constructores
@@ -44,6 +45,7 @@ public class Pedido {
     public void agregarItems(ItemsDelPedido item){ //Agregamos los items dentro de la lista "elementos"
         item.setPedido(this);
         this.elementos.add(item);
+        this.valorTotal = this.valorTotal.add(item.getValorTotal());
     }
     
     //Getters y Setters
@@ -65,11 +67,11 @@ public class Pedido {
     }
 
     public BigDecimal getTotal() {
-        return total;
+        return valorTotal;
     }
 
     public void setTotal(BigDecimal total) {
-        this.total = total;
+        this.valorTotal = total;
     }
 
     public Cliente getCliente() {

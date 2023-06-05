@@ -1,6 +1,7 @@
 package com.latam.alura.TheGioStore.tests;
 
 import com.latam.alura.TheGioStore.dao.CategoriaDAO;
+import com.latam.alura.TheGioStore.dao.ClienteDAO;
 import com.latam.alura.TheGioStore.dao.PedidoDAO;
 import com.latam.alura.TheGioStore.dao.ProductoDAO;
 import com.latam.alura.TheGioStore.modelo.Categoria;
@@ -26,14 +27,16 @@ public class RegistroDePedido {
         ProductoDAO productoDao = new ProductoDAO(conexion);     
         Producto producto = productoDao.consultaPorId(1l);
         
+        ClienteDAO clienteDao = new ClienteDAO(conexion);
         PedidoDAO pedidoDao = new PedidoDAO(conexion);
         
-        Cliente cliente1 = new Cliente("Giovanni", "1234");
+        Cliente cliente1 = new Cliente("Andres", "5678");
         Pedido pedido1 = new Pedido(cliente1);
         pedido1.agregarItems(new ItemsDelPedido(5,producto, pedido1));
         
         conexion.getTransaction().begin();
         
+        clienteDao.guardar(cliente1);
         pedidoDao.guardar(pedido1);
         
         conexion.getTransaction().commit();

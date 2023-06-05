@@ -18,7 +18,7 @@ public class ItemsDelPedido {
     
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private Long idPedido;
+    private Long idItemPedido;
     
     private int cantidad;
     
@@ -44,11 +44,11 @@ public class ItemsDelPedido {
 
     //Getters&Setters
     public Long getIdPedido() {
-        return idPedido;
+        return idItemPedido;
     }
 
-    //public void setIdPedido(Long idPedido) {
-    //    this.idPedido = idPedido;
+    //public void setIdPedido(Long idItemPedido) {
+    //    this.idItemPedido = idItemPedido;
     //}
 
     public int getCantidad() {
@@ -83,5 +83,8 @@ public class ItemsDelPedido {
         this.pedidoFK = pedido;
     }
     
+    public BigDecimal getValorTotal(){
+        return this.precioUnitario.multiply(new BigDecimal(this.cantidad));
+    }
     
 }

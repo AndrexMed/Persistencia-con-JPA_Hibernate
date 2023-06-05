@@ -7,9 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,12 +26,11 @@ public class Pedido {
     private LocalDate fechaRegistro = LocalDate.now();
     private BigDecimal total;
     
-    @ManyToOne // Un cliente tiene muchos pedidos... Aqui relacionamos Pedido con Cliente
+    @ManyToOne // Muchos Pedidos a Un Cliente... Aqui relacionamos Pedido con Cliente
     private Cliente cliente;
     
-    @ManyToMany //Muchos Pedidos - Muchos Productos
-    @JoinTable(name="items_pedidox") // Se crea tabla intermedia
-    private List<Producto> productos;
+    @OneToMany // Tipo de Relacion : Un Pedido a Muchos "ItemsDelPedido"
+    private List<ItemsDelPedido> items;
     
     //Constructores
     public Pedido() {
@@ -43,7 +41,6 @@ public class Pedido {
     }
     
     //Getters y Setters
-
     public Long getIdPedido() {
         return idPedido;
     }

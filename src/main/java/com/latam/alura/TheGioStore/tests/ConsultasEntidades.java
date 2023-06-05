@@ -49,16 +49,23 @@ public class ConsultasEntidades {
         System.out.println("***** Busqueda Por Nombre de Categoria");
         productosPorNombreCategoria.forEach(item -> System.out.println("Busqueda por nombre Categoria: " + item.getNombrePro()));
         System.out.println("*****");
+        
+        BigDecimal precioPorNombre = productoDao.consultarPrecioPorNombreProducto("Asus Vivo Book");
+        
+        System.out.println("");
+        System.out.println("***** Busqueda de precioPorNombre");
+        System.out.println(precioPorNombre);
+        System.out.println("*****");
     }
 
 //Metodo para insertar Producto y Categoria.
     private static void registrarProducto() {
         Categoria categoria = new Categoria("Computadores");
 
-        Producto computador = new Producto("Asus",
-                "Nuevo",
+        Producto computador = new Producto("Asus Vivo Book",
+                "Color Azul",
                 10,
-                new BigDecimal("3000"),
+                new BigDecimal("1000"),
                 categoria);
 
         EntityManager ManejadorEntidad = JPAUtils.recuperarConexion(); //Iniciamos la conexion

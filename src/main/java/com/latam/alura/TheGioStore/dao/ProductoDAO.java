@@ -1,6 +1,7 @@
 package com.latam.alura.TheGioStore.dao;
 
 import com.latam.alura.TheGioStore.modelo.Producto;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -42,12 +43,17 @@ public class ProductoDAO {
     
     public List<Producto> consultaPorNombre(String nombreEntrante){
         String consultaJQPL = "SELECT P FROM Producto AS P WHERE P.nombrePro = :nombrePro";
-        return this.conexion.createQuery(consultaJQPL).setParameter("nombrePro", nombreEntrante).getResultList();
+        return this.conexion.createQuery(consultaJQPL, Producto.class).setParameter("nombrePro", nombreEntrante).getResultList();
     }
     
     public List<Producto> consultaPorNombreCategoria(String nombreCategoriaEntrante){
         String consultaJQPL = "SELECT P FROM Producto AS P WHERE P.categoria.nombreCategoria = :nombreCat";
-        return this.conexion.createQuery(consultaJQPL).setParameter("nombreCat", nombreCategoriaEntrante).getResultList();
+        return this.conexion.createQuery(consultaJQPL, Producto.class).setParameter("nombreCat", nombreCategoriaEntrante).getResultList();
+    }
+    
+    public BigDecimal consultarPrecioPorNombreProducto (String nombreEntrante){
+        String consultaJQPL = "SELECT P.precioPro FROM Producto P WHERE P.nombrePro = :Parametro";
+        return this.conexion.createQuery(consultaJQPL, BigDecimal.class).setParameter("Parametro", nombreEntrante).getSingleResult();
     }
     
 }

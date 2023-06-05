@@ -2,6 +2,7 @@ package com.latam.alura.TheGioStore.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +30,8 @@ public class Pedido {
     @ManyToOne // Muchos Pedidos a Un Cliente... Aqui relacionamos Pedido con Cliente
     private Cliente cliente;
     
-    @OneToMany // Tipo de Relacion : Un Pedido a Muchos "ItemsDelPedido"
-    private List<ItemsDelPedido> items;
+    @OneToMany(mappedBy = "pedidoFK") // Tipo de Relacion : Un Pedido a Muchos "ItemsDelPedido", Con el mapped, referenciamos exactamente con la tabla ItemsDelPedido
+    private List<ItemsDelPedido> elementos = new ArrayList<>(); //Lista vacia
     
     //Constructores
     public Pedido() {
@@ -40,7 +41,13 @@ public class Pedido {
         this.cliente = cliente;
     }
     
+    public void agregarItems(ItemsDelPedido item){ //Agregamos los items dentro de la lista "elementos"
+        item.setPedido(this);
+        this.elementos.add(item);
+    }
+    
     //Getters y Setters
+
     public Long getIdPedido() {
         return idPedido;
     }

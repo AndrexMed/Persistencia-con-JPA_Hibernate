@@ -28,7 +28,7 @@ class ItemsDelPedido {
     private Producto producto; //Clave externa que referencia al producto asociado.
     
     @ManyToOne // Muchos ItemsDelPedido a Un pedido
-    private Pedido pedido; //Clave externa que referencia al pedido asociado.
+    private Pedido pedidoFK; //Clave externa que referencia al pedido asociado.
     
     //Constructor default
     public ItemsDelPedido() {
@@ -37,9 +37,10 @@ class ItemsDelPedido {
     //Constuctor personalizado
     public ItemsDelPedido(int cantidad, Pedido pedido) {
         this.cantidad = cantidad;
-        this.pedido = pedido;
+        this.pedidoFK = pedido;
+        this.precioUnitario = producto.getPrecioPro();
     }
-    
+
     //Getters&Setters
     public Long getIdPedido() {
         return idPedido;
@@ -74,11 +75,11 @@ class ItemsDelPedido {
     }
 
     public Pedido getPedido() {
-        return pedido;
+        return pedidoFK;
     }
 
     public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+        this.pedidoFK = pedido;
     }
     
     

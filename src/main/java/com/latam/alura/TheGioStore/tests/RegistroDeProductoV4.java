@@ -13,21 +13,21 @@ public class RegistroDeProductoV4 {
         
         System.out.println("Hello World");
         
-        Categoria categoria = new Categoria("Televisores");
+        Categoria categoria = new Categoria("PC");
         
         EntityManager conexion = JPAUtils.recuperarConexion(); //Establecemos conexion
         
         conexion.getTransaction().begin(); //Iniciamos transaccion
         
-        conexion.persist(categoria); //Esto indica que se guardara el obj categoria en la BD
+        conexion.persist(categoria); //Pasamos el obj al estado Managed
         
-        categoria.setNombreCategoria("Tvss"); //Cambio prueba
+        categoria.setNombreCategoria("Computadores"); //Cambio prueba
         
         conexion.flush(); //Sincronizamos cambios   
         conexion.clear(); //Borra cambios en la memoria, en este caso categoria se vuelve entidad "desconectada"
         
         categoria = conexion.merge(categoria); //Volvemos abrir la persistencia
-        categoria.setNombreCategoria("Software"); //Cambio de prueba
+        categoria.setNombreCategoria("Tabletas"); //Cambio de prueba
         
         conexion.flush(); // Sincronizamos cambios con la bd    
         conexion.clear();  //Borramos los cambios del Managed

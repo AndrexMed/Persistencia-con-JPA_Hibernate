@@ -15,7 +15,7 @@ import javax.persistence.Table;
  * @author giova
  */
 @Entity
-@Table(name = "Productos") //Esto se hace cuando la clase no tiene el mismo nombre de la tabla.
+//@Table(name = "Productos") //Esto se hace cuando la clase no tiene el mismo nombre de la tabla.
 public class Producto {
 
     @Id

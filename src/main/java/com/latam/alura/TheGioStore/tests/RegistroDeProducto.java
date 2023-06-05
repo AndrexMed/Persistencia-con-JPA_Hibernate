@@ -16,13 +16,13 @@ public class RegistroDeProducto {
     
     public static void main(String[] args) {
         
-        Categoria celulares = new Categoria("Celulares");
+        Categoria categoria = new Categoria("Celulares");
         
         Producto celular = new Producto("Samsumg",
-                                        "Telefono Usado",
+                                        "Telefono Usado, Blanco",
                                         10 , 
-                                        new BigDecimal("1000"),
-                                        celulares);
+                                        new BigDecimal("1500"),
+                                        categoria);
         
         
         EntityManager ManejadorEntidad = JPAUtils.recuperarConexion(); //Iniciamos la conexion
@@ -34,9 +34,10 @@ public class RegistroDeProducto {
         ManejadorEntidad.getTransaction().begin(); //Iniciamos la transaccion
         
         productoDao.guardar(celular); //Realizamos la persistencia
-        categoriaDao.guardar(celulares);
+        categoriaDao.guardar(categoria); // Pasamos los objetos a estado Managed
         
         ManejadorEntidad.getTransaction().commit();//Enviamos a la BD
+        
         ManejadorEntidad.close(); // Cerramos la conexion
     }
     

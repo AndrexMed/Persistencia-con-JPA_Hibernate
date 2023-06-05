@@ -17,7 +17,7 @@ public class RegistroDeProductoV2 {
         
         conexion.getTransaction().begin(); //Iniciamos la transaccion
         
-        conexion.persist(categoria); //
+        conexion.persist(categoria); //Pasamos el obj al estado Managed
         
         categoria.setNombreCategoria("Tests");
         

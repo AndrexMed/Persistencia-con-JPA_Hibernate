@@ -45,4 +45,9 @@ public class ProductoDAO {
         return this.conexion.createQuery(consultaJQPL).setParameter("nombrePro", nombreEntrante).getResultList();
     }
     
+    public List<Producto> consultaPorNombreCategoria(String nombreCategoriaEntrante){
+        String consultaJQPL = "SELECT P FROM Producto AS P WHERE P.categoria.nombreCategoria = :nombreCat";
+        return this.conexion.createQuery(consultaJQPL).setParameter("nombreCat", nombreCategoriaEntrante).getResultList();
+    }
+    
 }

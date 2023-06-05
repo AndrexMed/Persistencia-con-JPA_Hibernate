@@ -30,6 +30,7 @@ public class ConsultasEntidades {
 
         List<Producto> TodosLosProductos = productoDao.consultarTodos();
 
+        System.out.println("");
         System.out.println("***** TODOS LOS PRODUCTOS *****");
         TodosLosProductos.forEach(item -> System.out.println("NombreProducto: " + item.getNombrePro()
                 + ", Descripcion: " + item.getDescripcionPro()
@@ -40,6 +41,13 @@ public class ConsultasEntidades {
 
         System.out.println("*****Busqueda Por Nombre");
         productosPorNombre.forEach(item -> System.out.println("Descripcion del producto buscado por nombre : " + item.getDescripcionPro()));
+        System.out.println("*****");
+        
+        List<Producto> productosPorNombreCategoria = productoDao.consultaPorNombreCategoria("Celulares");
+        
+        System.out.println("");
+        System.out.println("***** Busqueda Por Nombre de Categoria");
+        productosPorNombreCategoria.forEach(item -> System.out.println("Busqueda por nombre Categoria: " + item.getNombrePro()));
         System.out.println("*****");
     }
 

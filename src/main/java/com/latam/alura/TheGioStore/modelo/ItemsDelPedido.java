@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "items_pedido")
-class ItemsDelPedido {
+public class ItemsDelPedido {
     
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -35,8 +35,9 @@ class ItemsDelPedido {
     }
     
     //Constuctor personalizado
-    public ItemsDelPedido(int cantidad, Pedido pedido) {
+    public ItemsDelPedido(int cantidad, Producto producto, Pedido pedido) {
         this.cantidad = cantidad;
+        this.producto = producto;
         this.pedidoFK = pedido;
         this.precioUnitario = producto.getPrecioPro();
     }

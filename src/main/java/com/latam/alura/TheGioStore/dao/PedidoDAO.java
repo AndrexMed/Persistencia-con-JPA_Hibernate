@@ -1,6 +1,7 @@
 package com.latam.alura.TheGioStore.dao;
 
 import com.latam.alura.TheGioStore.modelo.Pedido;
+import com.latam.alura.TheGioStore.vo.RelatorioDeVentas;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -55,10 +56,39 @@ public class PedidoDAO {
         String consultaJQPL = "SELECT P.precioPro FROM Pedido P WHERE P.nombrePro = :Parametro";
         return this.conexion.createQuery(consultaJQPL, BigDecimal.class).setParameter("Parametro", nombreEntrante).getSingleResult();
     }
-    
-    public BigDecimal consultarTotalVendido(){
+
+    public BigDecimal consultarTotalVendido() {
         String consulta = "SELECT MAX(P.valorTotal) FROM Pedido P";
         return this.conexion.createQuery(consulta, BigDecimal.class).getSingleResult();
+    }
+
+    /*Forma 1
+    public List<Object[]> relatorioDeVentas(){
+        String consultaJPQL = "SELECT producto.nombrePro, "
+        + "SUM(item.cantidad), "
+        + "MAX(pedido.fechaRegistro) "
+        + "FROM Pedido pedido "
+        + "JOIN pedido.elementos item "
+        + "JOIN item.producto producto "
+        + "GROUP BY producto.nombrePro "
+        + "ORDER BY SUM(item.cantidad) DESC";
+
+        return this.conexion.createQuery(consultaJPQL, Object[].class).getResultList();
+    }*/
+    
+    //Forma 2
+    public List<RelatorioDeVentas> relatorioDeVentasVO() {
+        String consultaJPQL = "SELECT new com.latam.alura.TheGioStore.vo.RelatorioDeVentas("
+                + "producto.nombrePro, "
+                + "SUM(item.cantidad), "
+                + "MAX(pedido.fechaRegistro)) "
+                + "FROM Pedido pedido "
+                + "JOIN pedido.elementos item "
+                + "JOIN item.producto producto "
+                + "GROUP BY producto.nombrePro "
+                + "ORDER BY SUM(item.cantidad) DESC";
+
+        return this.conexion.createQuery(consultaJPQL, RelatorioDeVentas.class).getResultList();
     }
 
 }

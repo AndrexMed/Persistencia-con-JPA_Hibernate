@@ -52,8 +52,9 @@ public class ProductoDAO {
     }
     
     public BigDecimal consultarPrecioPorNombreProducto (String nombreEntrante){
-        String consultaJQPL = "SELECT P.precioPro FROM Producto P WHERE P.nombrePro = :Parametro";
-        return this.conexion.createQuery(consultaJQPL, BigDecimal.class).setParameter("Parametro", nombreEntrante).getSingleResult();
+        //String consultaJQPL = "SELECT P.precioPro FROM Producto P WHERE P.nombrePro = :Parametro";
+        //return this.conexion.createQuery(consultaJQPL, BigDecimal.class).setParameter("Parametro", nombreEntrante).getSingleResult();
+        return this.conexion.createNamedQuery("Producto.consultaDePrecio", BigDecimal.class).setParameter("Parametro", nombreEntrante).getSingleResult();
     }
     
 }

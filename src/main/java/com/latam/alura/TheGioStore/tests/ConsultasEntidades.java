@@ -17,12 +17,12 @@ public class ConsultasEntidades {
 
     public static void main(String[] args) {
 
-        //registrarProducto(); // Metodo que guarda un registro de un producto y su categoria...
+        registrarProducto(); // Metodo que guarda un registro de un producto y su categoria...
         EntityManager ManejadorEntidad = JPAUtils.recuperarConexion(); //Iniciamos la conexion
 
         ProductoDAO productoDao = new ProductoDAO(ManejadorEntidad); //Heredamos los metodos del DAO
 
-        Producto productoPorId = productoDao.consultaPorId(5l); // Almacenamos la consulta en una variable, se agrega la "l" para decirle que es de tipo Long
+        Producto productoPorId = productoDao.consultaPorId(1l); // Almacenamos la consulta en una variable, se agrega la "l" para decirle que es de tipo Long
 
         System.out.println("*****");
         System.out.println("Se encontro el productoPorID: " + productoPorId.getNombrePro()); //Imprimimos el resultado

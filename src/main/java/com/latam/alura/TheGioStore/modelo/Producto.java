@@ -8,12 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
  *
  * @author giova
  */
+@NamedQuery(name = "Producto.consultaDePrecio" , query = "SELECT P.precioPro FROM Producto P WHERE P.nombrePro = :Parametro")
 @Entity
 //@Table(name = "Productos") //Esto se hace cuando la clase no tiene el mismo nombre de la tabla.
 public class Producto {

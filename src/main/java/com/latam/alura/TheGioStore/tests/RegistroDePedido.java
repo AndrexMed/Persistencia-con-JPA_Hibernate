@@ -41,6 +41,9 @@ public class RegistroDePedido {
         
         conexion.getTransaction().commit();
         
+        BigDecimal valorTotalVendido = pedidoDao.consultarTotalVendido();
+        System.out.println("Valor Total Ventas : " + valorTotalVendido);
+        
     }
     
     private static void registrarProducto() {

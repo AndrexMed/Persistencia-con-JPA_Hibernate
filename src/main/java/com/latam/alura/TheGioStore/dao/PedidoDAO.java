@@ -55,5 +55,10 @@ public class PedidoDAO {
         String consultaJQPL = "SELECT P.precioPro FROM Pedido P WHERE P.nombrePro = :Parametro";
         return this.conexion.createQuery(consultaJQPL, BigDecimal.class).setParameter("Parametro", nombreEntrante).getSingleResult();
     }
+    
+    public BigDecimal consultarTotalVendido(){
+        String consulta = "SELECT MAX(P.valorTotal) FROM Pedido P";
+        return this.conexion.createQuery(consulta, BigDecimal.class).getSingleResult();
+    }
 
 }
